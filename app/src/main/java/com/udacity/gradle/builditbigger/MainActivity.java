@@ -1,7 +1,10 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +14,7 @@ import com.example.JokeClass;
 import com.example.androidjokelib.JokeActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,8 +54,7 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view){
         JokeClass joke = new JokeClass();
 
-        JokeActivity.startJokeActivity(getApplicationContext(), joke);
+        JokeActivity.startJokeActivity(this, joke);
     }
-
 
 }

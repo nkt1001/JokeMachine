@@ -1,8 +1,9 @@
 package com.example.androidjokelib;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -16,11 +17,11 @@ public class JokeActivity extends AppCompatActivity {
 
     private String mCurrentJoke;
 
-    public static void startJokeActivity(Context context, JokeClass joke) {
-        Intent intent = new Intent(context, JokeActivity.class);
+    public static void startJokeActivity(Activity activity, JokeClass joke) {
+        Intent intent = new Intent(activity, JokeActivity.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(TAG, joke.getFreshJoke());
-        context.startActivity(intent);
+        intent.putExtra(TAG, joke.getJoke().getJoke());
+        ActivityCompat.startActivity(activity, intent, null);
     }
 
     @Override

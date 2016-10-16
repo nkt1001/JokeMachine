@@ -6,6 +6,8 @@
 
 package com.example.Nkt1001.myapplication.backend;
 
+import com.example.Joke;
+import com.example.JokeClass;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -37,4 +39,9 @@ public class MyEndpoint {
         return response;
     }
 
+    @ApiMethod(name="getJoke")
+    public Joke obtainJoke() {
+        JokeClass jokeClass = new JokeClass();
+        return jokeClass.getJoke();
+    }
 }
