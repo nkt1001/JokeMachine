@@ -6,8 +6,6 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
-import javax.inject.Named;
-
 @Api(
         name = "myApi",
         version = "v1",
@@ -18,14 +16,6 @@ import javax.inject.Named;
         )
 )
 public class MyEndpoint {
-
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
-        MyBean response = new MyBean();
-        response.setData("Hi, " + name);
-
-        return response;
-    }
 
     @ApiMethod(name="obtainJoke", httpMethod = "GET")
     public Joke obtainJoke() {

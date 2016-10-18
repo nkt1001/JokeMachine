@@ -84,8 +84,7 @@ string. For a refresher on setting up Android tests, check out demo 4.09.
 
 ### Step 5: Add a Paid Flavor
 
-Add free and paid product flavors to your app. Remove the ad (and any
-dependencies you can) from the paid flavor.
+Add free and paid product flavors to your app. Remove the ad (and any dependencies you can) from the paid flavor.
 
 ## Optional Tasks
 

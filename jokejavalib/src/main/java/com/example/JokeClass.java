@@ -1,10 +1,8 @@
 package com.example;
 
 public class JokeClass {
-
-    JokeBuilder jokeBuilder = new JokeBuilder();
-
+    private JokeBase jokeBase = new JokeBase();
     public Joke tellJoke() {
-        return jokeBuilder.getNextJoke();
+        return jokeBase.getNextJoke();
     }
 }
