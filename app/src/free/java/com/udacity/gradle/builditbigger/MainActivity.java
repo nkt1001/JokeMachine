@@ -105,8 +105,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadJoke() {
-        endpoint = new EndpointsAsyncTask(null, jokeCallback);
-        endpoint.execute();
+        if (endpoint == null) endpoint = new EndpointsAsyncTask(jokeCallback);
+        if (endpoint.getStatus() != AsyncTask.Status.RUNNING) {
+            endpoint = new EndpointsAsyncTask(jokeCallback);
+            endpoint.execute();
+        }
     }
 
 }

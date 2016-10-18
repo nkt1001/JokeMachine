@@ -18,24 +18,20 @@ import java.util.concurrent.CountDownLatch;
 class EndpointsAsyncTask extends AsyncTask<Void, Void, Pair<Boolean, String>> {
 
     private JokeCallback callback;
-    private String address;
 
-    private final static String ADDRESS_DEFAULT = "10.0.2.2:8080";
+    private final static String ROOT_URL = "https://gcebackend.appspot.com/_ah/api/";
 
     private static MyApi myApiService = null;
 
     private CountDownLatch doneSignal;
 
-    EndpointsAsyncTask(String address, JokeCallback callback) {
+    EndpointsAsyncTask(JokeCallback callback) {
 
-        this.address = address == null ? ADDRESS_DEFAULT : address;
         this.callback = callback;
     }
 
     //testing
     EndpointsAsyncTask(CountDownLatch doneSignal) {
-//        address = "192.168.88.249:8080";
-        address = ADDRESS_DEFAULT;
         callback = null;
         this.doneSignal = doneSignal;
     }
@@ -57,7 +53,7 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, Pair<Boolean, String>> {
                     // options for running against local devappserver
                     // - 10.0.2.2 is localhost's IP address in Android emulator
                     // - turn off compression when running against local devappserver
-                    .setRootUrl("http://" + address + "/_ah/api/")
+                    .setRootUrl(ROOT_URL)
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {

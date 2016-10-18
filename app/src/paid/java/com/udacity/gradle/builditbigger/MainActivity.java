@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
     }
 
     public void tellJoke(View view) {
-        if (mEndpoint == null) mEndpoint = new EndpointsAsyncTask(null, this);
+        if (mEndpoint == null) mEndpoint = new EndpointsAsyncTask(this);
 
         if (mEndpoint.getStatus() != AsyncTask.Status.RUNNING) {
-            mEndpoint = new EndpointsAsyncTask(null, this);
+            mEndpoint = new EndpointsAsyncTask(this);
             mEndpoint.execute();
         }
     }
